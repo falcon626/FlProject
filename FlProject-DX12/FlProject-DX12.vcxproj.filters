@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Src\Application">
+      <UniqueIdentifier>{5cf9fa65-b67b-4d45-9207-53ec71806978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework">
+      <UniqueIdentifier>{3f930860-9a87-409c-b7ea-9d55a6df5e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\System">
+      <UniqueIdentifier>{c47f579c-7192-45ad-ba46-9ac2c5ab4f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\System\Window">
+      <UniqueIdentifier>{b7caff80-c871-41e7-8a01-de2f0addeec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{0e1c8882-e559-42a4-a9d7-bbbfa8cc4b93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\Utility">
+      <UniqueIdentifier>{b3b9006a-0388-4ea5-b3da-d71871d58567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\Graphics">
+      <UniqueIdentifier>{3657f412-3507-4e0b-ada6-692f27df9567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\Graphics\Shader">
+      <UniqueIdentifier>{81b8256c-9232-4c4f-aabb-1a607a8986fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Framework\Graphics\Model">
+      <UniqueIdentifier>{f2d0d083-e375-4294-bd4c-e55ffed0dc4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Application\Application.cpp">
+      <Filter>Src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Framework\System\Window\Window.cpp">
+      <Filter>Src\Framework\System\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Framework\Utility\Utility.hxx">
+      <Filter>Src\Framework\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Application\Application.h">
+      <Filter>Src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Pch.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Framework\System\Window\Window.h">
+      <Filter>Src\Framework\System\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Framework\FlFramework.hxx">
+      <Filter>Src\Framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
