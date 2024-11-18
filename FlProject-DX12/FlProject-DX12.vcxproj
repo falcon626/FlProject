@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
     <ClCompile Include="Src\Framework\System\Window\Window.cpp" />
-    <ClCompile Include="Src\Framework\Utility\Utility.hxx" />
     <ClCompile Include="Src\Pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -151,6 +150,7 @@
     <ClInclude Include="Src\Application\Application.h" />
     <ClInclude Include="Src\Framework\FlFramework.hxx" />
     <ClInclude Include="Src\Framework\System\Window\Window.h" />
+    <ClInclude Include="Src\Framework\Utility\Utility.hxx" />
     <ClInclude Include="Src\Pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

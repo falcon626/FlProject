@@ -43,9 +43,6 @@
     <ClCompile Include="Src\Framework\System\Window\Window.cpp">
       <Filter>Src\Framework\System\Window</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Framework\Utility\Utility.hxx">
-      <Filter>Src\Framework\Utility</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Application\Application.h">
@@ -59,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Src\Framework\FlFramework.hxx">
       <Filter>Src\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Framework\Utility\Utility.hxx">
+      <Filter>Src\Framework\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
