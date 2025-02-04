@@ -1,27 +1,76 @@
 #pragma once
 
-class Window
-{
+//=====================================================
+//
+// ウィンドウ
+//
+//=====================================================
+class Window {
 public:
 
+	//===================================
+	// 取得・設定
+	//===================================
+
+	// ウィンドウハンドル取得
 	HWND GetWndHandle() const { return m_hWnd; }
+	// ウィンドウが存在する？
+	bool IsCreated() const { return m_hWnd ? true : false; }
+	// マウスホイールの変化量を取得
+	int GetMouseWheelVal() const { return m_mouseWheelVal; }
+	// インスタンスハンドル取得
+	HINSTANCE GetInstanceHandle() const { return GetModuleHandle(0); }
 
-	bool Create(const int clientWidth, const int clientHeight, const std::wstring& titleName, const std::wstring& windowClassName, const int32_t centerX = NULL, const int32_t centerY = NULL);
+	// クライアントサイズの設定
+	void SetClientSize(int w, int h);
 
-	bool ProcessMessage();
+	//===================================
+	// 初期化・解放
+	//===================================
 
-	const auto GetMouseWheelVal() const noexcept { return m_mouseWheelVal; }
+	// ウィンドウ作成
+	bool Create(int clientWidth, int clientHeight, std::string_view titleName, std::string_view windowClassName);
 
 	// 解放
 	void Release();
 
+	//
+	~Window() {
+		Release();
+	}
+
+	//===================================
+	// 処理
+	//===================================
+
+	// ウィンドウメッセージを処理する
+	//  戻り値：終了メッセージが来たらfalseが返る
+	bool ProcessMessage();
+
+	// ファイルを開くダイアログボックスを表示
+	// ・filepath		… 選択されたファイルパスが入る
+	// ・title			… ウィンドウのタイトル文字
+	// ・filters		… 指定された拡張子のみ表示されるようになる
+	static bool OpenFileDialog(std::string& filepath, std::string_view title = "ファイルを開く", const char* filters = "全てのファイル\0*.*\0");
+
+	// ファイル名をつけて保存ダイアログボックスを表示
+	// ・filepath		… 選択されたファイルパスが入る
+	// ・title			… ウィンドウのタイトル文字
+	// ・filters		… 指定された拡張子のみ表示されるようになる
+	// ・defExt			… ユーザーが拡張子を入力しなかった場合、これが自動的に付く
+	static bool SaveFileDialog(std::string& filepath, std::string_view title = "ファイルを保存", const char* filters = "全てのファイル\0*.*\0", std::string_view defExt = "");
+
 private:
 
-	void SetClientSize(const int w, const int h) const;
+	// ウィンドウハンドル
+	HWND	m_hWnd = nullptr;
 
-	LRESULT CALLBACK WindowProc(const HWND hWnd, const UINT message, const WPARAM wParam, const LPARAM lParam);
+	// マウスホイール値
+	int		m_mouseWheelVal = 0;
 
-	HWND	m_hWnd{};
+	// ウィンドウ関数
+	static LRESULT CALLBACK callWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-	int32_t m_mouseWheelVal{ NULL };
+
 };

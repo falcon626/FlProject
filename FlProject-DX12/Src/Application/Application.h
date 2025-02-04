@@ -1,16 +1,18 @@
 #pragma once
 
-#include "../Framework/System/Window/Window.h"
-
 class Application
 {
 public:
 
 	void Execute();
 
-	static auto& Instance()
+	inline auto End() noexcept { m_isEnd = true; }
+
+	inline const auto GetDeltaTime() const noexcept { return m_fpsController.GetDeltaTime(); }
+
+	static auto& Instance() noexcept
 	{
-		Application instance;
+		static auto instance{ Application{} };
 		return instance;
 	}
 private:
@@ -21,5 +23,11 @@ private:
 	Application(const Application&) = delete;
 	Application& operator=(const Application&) = delete;
 
-	Window m_window;
+	void Draw();
+	void Update();
+
+	Window m_window{};
+	FlFPSController m_fpsController{};
+
+	bool m_isEnd{ false };
 };

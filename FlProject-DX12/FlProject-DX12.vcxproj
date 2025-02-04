@@ -108,12 +108,20 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>.\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\Src;..\Library;..\Library\DirectXTK\Inc;..\Library\DirectXTex\DirectXTex;..\Library\FMOD_API\core\inc;..\Library\FMOD_API\studio\inc;..\Library\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Library\DirectXTK\Lib\$(Platform)\$(Configuration);..\Library\DirectXTex\Lib\$(Platform)\$(Configuration);..\Library\FMOD_API\core\lib\x64;..\Library\FMOD_API\studio\lib\x64;..\Library\assimp\build\lib\Debug;..\Library\assimp\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(ProjectDir)..\Library\assimp\build\lib\Debug\assimp-vc143-mtd.lib;$(ProjectDir)..\Library\assimp\build\lib\Release\assimp-vc143-mt.lib;$(ProjectDir)..\Library\FMOD_API\core\lib\x64\fmod_vc.lib;$(ProjectDir)..\Library\FMOD_API\studio\lib\x64\fmodstudioL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)..\Library\assimp\build\bin\Debug\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\assimp\build\bin\Release\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\FMOD_API\core\lib\x64\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\FMOD_API\studio\lib\x64\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -127,17 +135,42 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>.\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\Src;..\Library;..\Library\DirectXTK\Inc;..\Library\DirectXTex\DirectXTex;..\Library\FMOD_API\core\inc;..\Library\FMOD_API\studio\inc;..\Library\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Library\DirectXTK\Lib\$(Platform)\$(Configuration);..\Library\DirectXTex\Lib\$(Platform)\$(Configuration);..\Library\FMOD_API\core\lib\x64;..\Library\FMOD_API\studio\lib\x64;..\Library\assimp\build\lib\Debug;..\Library\assimp\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(ProjectDir)..\Library\assimp\build\lib\Debug\assimp-vc143-mtd.lib;$(ProjectDir)..\Library\assimp\build\lib\Release\assimp-vc143-mt.lib;$(ProjectDir)..\Library\FMOD_API\core\lib\x64\fmod_vc.lib;$(ProjectDir)..\Library\FMOD_API\studio\lib\x64\fmodstudioL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)..\Library\assimp\build\bin\Debug\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\assimp\build\bin\Release\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\FMOD_API\core\lib\x64\*.dll" "$(OutDir)"
+xcopy /y /d "$(ProjectDir)..\Library\FMOD_API\studio\lib\x64\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Animation\Animation.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Buffer\CBufferAllocater\CBufferAllocater.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Buffer\DepthStencil\DepthStencil.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Buffer\Texture\Texture.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\GraphicsAdministrator.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\GraphicsDevice.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Heap\CBVSRVUAVHeap\CBVSRVUAVHeap.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Heap\DSVHeap\DSVHeap.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Heap\RTVHeap\RTVHeap.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Mesh\Mesh.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Model\Model.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Model\ModelLoader.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Shader\Pipeline\Pipeline.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Shader\RootSignature\RootSignature.cpp" />
+    <ClCompile Include="Src\Framework\Graphics\Shader\Shader.cpp" />
+    <ClCompile Include="Src\Framework\Resource\Audio\FlAudioManager.cpp" />
+    <ClCompile Include="Src\Framework\System\FrameControl\FPSController.cpp" />
     <ClCompile Include="Src\Framework\System\Window\Window.cpp" />
     <ClCompile Include="Src\Pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -149,11 +182,48 @@
   <ItemGroup>
     <ClInclude Include="Src\Application\Application.h" />
     <ClInclude Include="Src\Framework\FlFramework.hxx" />
+    <ClInclude Include="Src\Framework\Graphics\Animation\Animation.h" />
+    <ClInclude Include="Src\Framework\Graphics\Buffer\Buffer.h" />
+    <ClInclude Include="Src\Framework\Graphics\Buffer\CBufferAllocater\CBufferAllocater.h" />
+    <ClInclude Include="Src\Framework\Graphics\Buffer\CBufferAllocater\CBufferData\CBufferData.h" />
+    <ClInclude Include="Src\Framework\Graphics\Buffer\DepthStencil\DepthStencil.h" />
+    <ClInclude Include="Src\Framework\Graphics\Buffer\Texture\Texture.h" />
+    <ClInclude Include="Src\Framework\Graphics\GraphicsAdministrator.h" />
+    <ClInclude Include="Src\Framework\Graphics\GraphicsDevice.h" />
+    <ClInclude Include="Src\Framework\Graphics\Heap\CBVSRVUAVHeap\CBVSRVUAVHeap.h" />
+    <ClInclude Include="Src\Framework\Graphics\Heap\DSVHeap\DSVHeap.h" />
+    <ClInclude Include="Src\Framework\Graphics\Heap\Heap.h" />
+    <ClInclude Include="Src\Framework\Graphics\Heap\RTVHeap\RTVHeap.h" />
+    <ClInclude Include="Src\Framework\Graphics\Mesh\Mesh.h" />
+    <ClInclude Include="Src\Framework\Graphics\Mesh\MeshData\MeshData.h" />
+    <ClInclude Include="Src\Framework\Graphics\Model\Model.h" />
+    <ClInclude Include="Src\Framework\Graphics\Model\ModelLoader.h" />
+    <ClInclude Include="Src\Framework\Graphics\Shader\Pipeline\Pipeline.h" />
+    <ClInclude Include="Src\Framework\Graphics\Shader\RootSignature\RootSignature.h" />
+    <ClInclude Include="Src\Framework\Graphics\Shader\Shader.h" />
+    <ClInclude Include="Src\Framework\Resource\Audio\FlAudioManager.h" />
+    <ClInclude Include="Src\Framework\System\Debug\Console\Console.hpp" />
+    <ClInclude Include="Src\Framework\System\Debug\Logger\FlDebugLogger.hpp" />
+    <ClInclude Include="Src\Framework\System\FrameControl\FPSController.h" />
     <ClInclude Include="Src\Framework\System\Window\Window.h" />
+    <ClInclude Include="Src\Framework\Utility\FlUtilityDefault.hxx" />
+    <ClInclude Include="Src\Framework\Utility\FlUtilityString.hxx" />
     <ClInclude Include="Src\Framework\Utility\Utility.hxx" />
     <ClInclude Include="Src\Pch.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\directxtk12_uwp.2024.10.29.1\build\native\directxtk12_uwp.targets" Condition="Exists('packages\directxtk12_uwp.2024.10.29.1\build\native\directxtk12_uwp.targets')" />
+    <Import Project="packages\directxtex_uwp.2024.10.29.1\build\native\directxtex_uwp.targets" Condition="Exists('packages\directxtex_uwp.2024.10.29.1\build\native\directxtex_uwp.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\directxtk12_uwp.2024.10.29.1\build\native\directxtk12_uwp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtk12_uwp.2024.10.29.1\build\native\directxtk12_uwp.targets'))" />
+    <Error Condition="!Exists('packages\directxtex_uwp.2024.10.29.1\build\native\directxtex_uwp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_uwp.2024.10.29.1\build\native\directxtex_uwp.targets'))" />
+  </Target>
 </Project>
